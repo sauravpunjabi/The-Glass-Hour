@@ -4,13 +4,16 @@ import { sliderLists } from '../../constants'
 import { useState, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/all';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Menu = () => {
- const contentRef = useRef();
+  const contentRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
   //provided [currentIndex] in dependencies array so that it re-runs whenever the variable changes.
- 
  useGSAP(()=>{
+
     gsap.fromTo('#title', { opacity: 0 }, { opacity: 1, duration: 1 });
 
     gsap.fromTo('.cocktail img', { opacity: 0, xPercent: -100 }, {
@@ -48,8 +51,7 @@ const Menu = () => {
 
   return (
     <section id = 'menu' aria-labelledby='menu-heading'>
-      <img src="/images/slider-left-leaf.png" alt="left leaf" id = "m-left-leaf" />
-      <img src="/images/slider-right-leaf.png" alt="right leaf" id = "m-right-leaf" />
+      
 
       <h2 id='menu-heading' className='sr-only'>Cocktail menu</h2>
 
